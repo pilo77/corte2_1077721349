@@ -63,6 +63,7 @@ Se necesita una base de datos para una taller que requiere control y registro de
 |-----|---------|-----------|-----------|-----------|------------------|
 |  1  | 1234567 | Juan      | Pérez     | 5551234567| juan@example.com |
 |  2  | 7654321 | María     | García    | 5557654321| maria@example.com|
+|  3  | 7654322 | Marío     | García    | 5557654322| mario@example.com|
 
 ---
 
