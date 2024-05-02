@@ -29,15 +29,17 @@ En este sentido, se procede a normarlizar de la siguiente manera.
 
 * La clasificación de la categoria carros , estos son individuales. 
 CategoriaCarros
-| id |nombre     | descricion| rendimiento |estado     |
-|----|-------    |-----------|-----------  |-----------|
-|  1 |Deportico  |carro      |2500 v       |True       |
-|  2 |formal     |sisi       |2400  s      |True       |
+
+| id  | nombre     | descripción | rendimiento | estado |
+|-----|------------|-------------|--------------|---------|
+|  1  | Deportico  | carro       | 2500 v       | True    |
+|  2  | formal     | sisi        | 2400 s       | True    |
 
 
 * Se conoce que inicio de un cultivo, se requiere de la disponibilidad del galpon. Al Asignar un grupo de pollos al galpon, se debe ocupar el galpo  
 
 Cultivo
+
 | id    | Cantidad |  Fecha     | GalponId | 
 |-------|----------|------------|----------|
 |   1   | 1200     | 17-04-2024 |   4      |
