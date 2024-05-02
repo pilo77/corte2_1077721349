@@ -1,92 +1,111 @@
-# corte2_1077721349# Control y seguimiento Control y registro de crros. 
+# corte2_1077721349 - Control y seguimiento de carros.
 
+#### Necesidad:
+Se necesita una base de datos para una taller que requiere control y registro de autos.
 
-#### Necesidad: se necesita una base de dato para una emresa que requiere control y registro de de autos 
+#### Análisis: Definición de requerimientos.
+### Requerimientos Funcionales
 
+1. **RF1: Clasificación de Categorías de Carros**
+   - El sistema debe tener la capacidad de almacenar diferentes categorías de carros, cada una con sus propias propiedades como nombre, descripción, rendimiento y estado.
 
+2. **RF2: Registro de Autos**
+   - El sistema debe permitir el registro de autos, incluyendo atributos como nombre, modelo, tamaño, número de puertas y referencia a la categoría del carro.
 
-#### Análisis: Definición de requerimientos. 
+3. **RF3: Relación entre Autos y Personas**
+   - El sistema debe mantener una relación entre autos y personas mediante la tabla "AutosPersona". Esta tabla debe incluir atributos como fecha de asociación y referencias a los autos y las personas.
 
-1. RF1: Tendra un categorias de carros y habran 4 categorias
-2. RF1: tendra 6 atributos los Autos con referencia{ref:categoria}
-3. RF1: tendra AutosPersona y tendra 4 atributos y con referencias [ref:Autos,ref:persona]
-1. RNF1: tendra personas y tendra 6 atributos no tiene ninguna referencia pero se necesita para el Autos Personas
+4. **RF4: Registro de Personas**
+   - El sistema debe permitir el registro de personas con atributos como cédula, nombre, apellido, teléfono y correo electrónico.
+
+### Requerimientos No Funcionales
+
+1. **RNF1: Integridad Referencial**
+   - El sistema debe asegurar la integridad referencial entre las tablas, mediante claves foráneas y restricciones adecuadas.
+
+2. **RNF2: Rendimiento del Sistema**
+   - El sistema debe ser capaz de manejar múltiples operaciones simultáneamente sin degradación significativa del rendimiento.
+
+3. **RNF3: Seguridad de Datos**
+   - El sistema debe proteger los datos almacenados y asegurar que solo el personal autorizado tenga acceso a información sensible.
+
+4. **RNF4: Escalabilidad**
+   - El sistema debe ser capaz de escalar para acomodar un creciente número de autos y personas sin requerir cambios significativos en la estructura de la base de datos.
+
+5. **RNF5: Disponibilidad y Recuperación de Desastres**
+   - El sistema debe tener mecanismos para garantizar la alta disponibilidad y proporcionar planes de recuperación ante fallos o desastres.
 
 
 #### Diseñar Base de Datos
-Datos a tener en cuenta
 
-| código | Ubicación | Capacidad | Cantidad |  Fecha   | Estado |
-|--------|-----------|-----------|----------|----------|--------|
-| 101    |C-101      |2500       |0         |          | False  |
-| 102    |C-102      |2400       |2000      |17-04-2024| True   |
-| 112    |B-112      |600        |600       |17-04-2024| False  |
-| 112    |B-112      |600        |400       |20-05-2024| True   |
+- La clasificación de las categorías de carros, estos son individuales.
 
-* De lo anterior, se puede resaltar lo siguiente, si bien es cierto, se puede ingresar los datos sin normalización, se sabe que es necesario para la optimización y traza de los datos. 
+##### Tabla: CategoriaCarros
+| id  | nombre    | descripción | rendimiento | estado |
+|-----|-----------|-------------|--------------|--------|
+|  1  | Deportico | carro rápido| 2500 v       | True   |
+|  2  | Formal    | carro lujoso| 2400 s       | True   |
 
-En este sentido, se procede a normarlizar de la siguiente manera. 
+##### Tabla: Autos
+| id  | nombre  | modelo | tamaño | puertas | CategoriaCarros_id |
+|-----|---------|--------|--------|---------|--------------------|
+|  1  | Mustang | GT     | 450    | 2       | 1                  |
+|  2  | Accord  | LX     | 350    | 4       | 2                  |
 
-* La clasificación de la categoria carros , estos son individuales. 
-CategoriaCarros
+##### Tabla: AutosPersona
+| id  | fecha       | Autos_id | Persona_id |
+|-----|-------------|----------|------------|
+|  1  | 2023-05-01  | 1        | 1          |
+|  2  | 2023-06-15  | 2        | 2          |
 
-| id  | nombre     | descripción | rendimiento | estado |
-|-----|------------|-------------|--------------|---------|
-|  1  | Deportico  | carro       | 2500 v       | True    |
-|  2  | formal     | sisi        | 2400 s       | True    |
+##### Tabla: Persona
+| id  | cédula  | nombre    | apellido  | teléfono  | correo            |
+|-----|---------|-----------|-----------|-----------|------------------|
+|  1  | 1234567 | Juan      | Pérez     | 5551234567| juan@example.com |
+|  2  | 7654321 | María     | García    | 5557654321| maria@example.com|
 
+---
 
-* Se conoce que inicio de un cultivo, se requiere de la disponibilidad del galpon. Al Asignar un grupo de pollos al galpon, se debe ocupar el galpo  
+> Ver:
+![Modelo relacional del ejercicio](IMG/README.pdf)
 
-Cultivo
+> Script de la base de datos:
+```sql
+DROP DATABASE IF EXISTS cultivo;
 
-| id    | Cantidad |  Fecha     | GalponId | 
-|-------|----------|------------|----------|
-|   1   | 1200     | 17-04-2024 |   4      |
-|   2   | 600      | 17-04-2024 |   3      |
-|   3   | 400      | 20-5-2024  |   3      |
+CREATE DATABASE ControlAutos;
 
+USE ControlAutos;
 
-> Ver
-![Modelo relacional del ejercicio](bd/MR.png)
+CREATE TABLE CategoriaCarros (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL UNIQUE,
+    descripción VARCHAR(50) NOT NULL,
+    rendimiento NVARCHAR(50) NOT NULL,
+    estado BIT DEFAULT TRUE
+);
 
-> Script de la base de datos
-sql
-    DROP DATABASE IF EXISTS cultivo;
+CREATE TABLE Autos (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL UNIQUE,
+    modelo VARCHAR(50) NOT NULL,
+    tamaño INT NOT NULL,
+    puertas INT NOT NULL,
+    FOREIGN KEY (CategoriaCarros_id) REFERENCES CategoriaCarros(id)
+);
 
-    CREATE DATABASE ControlAutos;
+CREATE TABLE AutosPersona (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    fecha DATE NOT NULL,
+    FOREIGN KEY (Autos_id) REFERENCES Autos(id),
+    FOREIGN KEY (Persona_id) REFERENCES Persona(id)
+);
 
-    USE ControlAutos;
-
-    CREATE table CategoriaCarros(
-        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-        nombre VARCHAR(50) NOT NULL UNIQUE,
-        descripcion VARCHAR(50) NOT NULL,
-        rendimiento NVARCHAR(50) NOT NULL,
-        estado BIT DEFAULT TRUE
-         
-    ); 
-
-    CREATE table Autos(
-        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-        nombre VARCHAR(50) NOT NULL UNIQUE,
-        modelo VARCHAR(50) NOT NULL,
-        TAMAÑO INT NOT NULL,
-        puertas INT NOT NULL,
-        FOREIGN KEY (CategoriaCarros_id) REFERENCES CategoriaCarros(id)
-    ); 
-     CREATE table AutosPersona(
-        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-      Fecha DATE NOT NULL,
-        FOREIGN KEY (Autos_id) REFERENCES Autos(id)
-         FOREIGN KEY (PErsona_id) REFERENCES Persona(id)
-    ); 
-     CREATE table Persona(
-        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-        cedula INT NOT NULL,
-        nombre VARCHAR(50) NOT NULL UNIQUE,
-        Apellido VARCHAR(50) NOT NULL,
-        telefono INT NOT NULL,
-        correo VARCHAR(50) NOT NULL,
-     
-    ); 
+CREATE TABLE Persona (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    cédula INT NOT NULL,
+    nombre VARCHAR(50) NOT NULL UNIQUE,
+    apellido VARCHAR(50) NOT NULL,
+    teléfono INT NOT NULL,
+    correo VARCHAR(50) NOT NULL
+);
