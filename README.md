@@ -110,5 +110,6 @@ CREATE TABLE Persona (
     teléfono INT NOT NULL,
     correo VARCHAR(50) NOT NULL
 );
+
 # Ver planificación 
 [Ver Aquí](https://trello.com/b/1rmrAMV0/parcialanalisis1077721349)
