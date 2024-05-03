@@ -68,7 +68,7 @@ Se necesita una base de datos para una taller que requiere control y registro de
 ---
 
 > Ver:
-![Modelo relacional del ejercicio](IMG/README.pdf)
+![modelo relacional](IMG/MR.png)
 
 > Script de la base de datos:
 ```sql
@@ -81,7 +81,7 @@ USE ControlAutos;
 CREATE TABLE CategoriaCarros (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL UNIQUE,
-    descripción VARCHAR(50) NOT NULL,
+    descripcion VARCHAR(50) NOT NULL,
     rendimiento NVARCHAR(50) NOT NULL,
     estado BIT DEFAULT TRUE
 );
@@ -110,3 +110,5 @@ CREATE TABLE Persona (
     teléfono INT NOT NULL,
     correo VARCHAR(50) NOT NULL
 );
+# Ver planificación 
+[Ver Aquí](https://trello.com/b/1rmrAMV0/parcialanalisis1077721349)
