@@ -1,115 +1,83 @@
 # corte2_1077721349 - Control y seguimiento de carros.
 
-#### Necesidad:
-Se necesita una base de datos para una taller que requiere control y registro de autos.
+Necesidad:
+La empresa requiere un sistema de recordatorio personalizado para sus empleados, con el fin de mejorar la gestión del tiempo y las responsabilidades laborales y personales.
 
 #### Análisis: Definición de requerimientos.
 ### Requerimientos Funcionales
 
-1. **RF1: Clasificación de Categorías de Carros**
-   - El sistema debe tener la capacidad de almacenar diferentes categorías de carros, cada una con sus propias propiedades como nombre, descripción, rendimiento y estado.
+1. **RF1: Gestión de Usuarios**
+   - El sistema debe permitir el registro de usuarios, incluyendo atributos como país, primer nombre, segundo nombre, contraseña, rol y nombre de usuario.
 
-2. **RF2: Registro de Autos**
-   - El sistema debe permitir el registro de autos, incluyendo atributos como nombre, modelo, tamaño, número de puertas y referencia a la categoría del carro.
+2. **RF2: Gestión de Categorías de Recordatorios**
+   - El sistema debe tener la capacidad de clasificar los recordatorios en diferentes categorías, cada una asociada a un usuario específico.
 
-3. **RF3: Relación entre Autos y Personas**
-   - El sistema debe mantener una relación entre autos y personas mediante la tabla "AutosPersona". Esta tabla debe incluir atributos como fecha de asociación y referencias a los autos y las personas.
+3. **RF3: Gestión de Recordatorios**
+   - El sistema debe permitir a los usuarios crear recordatorios personalizados, especificando detalles como archivo adjunto, descripción, fecha, hora, título y categoría..
 
-4. **RF4: Registro de Personas**
-   - El sistema debe permitir el registro de personas con atributos como cédula, nombre, apellido, teléfono y correo electrónico.
+
 
 ### Requerimientos No Funcionales
 
-1. **RNF1: Integridad Referencial**
-   - El sistema debe asegurar la integridad referencial entre las tablas, mediante claves foráneas y restricciones adecuadas.
+1. **RNF1: Integridad de Datos**
+   - El sistema debe asegurar la integridad de los datos, mediante el uso de claves primarias y foráneas en las tablas de la base de datos.
 
 2. **RNF2: Rendimiento del Sistema**
-   - El sistema debe ser capaz de manejar múltiples operaciones simultáneamente sin degradación significativa del rendimiento.
+   - El sistema debe ser capaz de manejar múltiples usuarios y recordatorios simultáneamente, sin afectar significativamente su rendimiento.
+
 
 3. **RNF3: Seguridad de Datos**
-   - El sistema debe proteger los datos almacenados y asegurar que solo el personal autorizado tenga acceso a información sensible.
+   - El sistema debe proteger la información almacenada, asegurando que solo el personal autorizado tenga acceso a los recordatorios y datos de los usuarios.
 
 4. **RNF4: Escalabilidad**
-   - El sistema debe ser capaz de escalar para acomodar un creciente número de autos y personas sin requerir cambios significativos en la estructura de la base de datos.
+   - El sistema debe ser escalable para soportar un crecimiento en el número de usuarios y recordatorios sin requerir cambios importantes en su estructura.
 
-5. **RNF5: Disponibilidad y Recuperación de Desastres**
-   - El sistema debe tener mecanismos para garantizar la alta disponibilidad y proporcionar planes de recuperación ante fallos o desastres.
+5. **RNF5: Disponibilidad y Recuperación de Datos**
+   - El sistema debe garantizar la disponibilidad de los datos y contar con mecanismos de respaldo para la recuperación ante posibles fallos o pérdida de información.
 
 
 #### Diseñar Base de Datos
 
-- La clasificación de las categorías de carros, estos son individuales.
-
-##### Tabla: CategoriaCarros
-| id  | nombre    | descripción | rendimiento | estado |
-|-----|-----------|-------------|--------------|--------|
-|  1  | Deportico | carro rápido| 2500 v       | True   |
-|  2  | Formal    | carro lujoso| 2400 s       | True   |
-
-##### Tabla: Autos
-| id  | nombre  | modelo | tamaño | puertas | CategoriaCarros_id |
-|-----|---------|--------|--------|---------|--------------------|
-|  1  | Mustang | GT     | 450    | 2       | 1                  |
-|  2  | Accord  | LX     | 350    | 4       | 2                  |
-
-##### Tabla: AutosPersona
-| id  | fecha       | Autos_id | Persona_id |
-|-----|-------------|----------|------------|
-|  1  | 2023-05-01  | 1        | 1          |
-|  2  | 2023-06-15  | 2        | 2          |
-
-##### Tabla: Persona
-| id  | cédula  | nombre    | apellido  | teléfono  | correo            |
-|-----|---------|-----------|-----------|-----------|------------------|
-|  1  | 1234567 | Juan      | Pérez     | 5551234567| juan@example.com |
-|  2  | 7654321 | María     | García    | 5557654321| maria@example.com|
-|  3  | 7654322 | Marío     | García    | 5557654322| mario@example.com|
-
----
 
 > Ver:
 ![modelo relacional](IMG/MR.png)
 
 > Script de la base de datos:
 ```sql
-DROP DATABASE IF EXISTS cultivo;
+   DROP DATABASE IF EXISTS SistemaDeRecordatorioPersonalizado;
 
-CREATE DATABASE ControlAutos;
+    CREATE DATABASE SistemaDeRecordatorioPersonalizado;
 
-USE ControlAutos;
+    USE SistemaDeRecordatorioPersonalizado;
 
-CREATE TABLE CategoriaCarros (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(50) NOT NULL UNIQUE,
-    descripcion VARCHAR(50) NOT NULL,
-    rendimiento NVARCHAR(50) NOT NULL,
-    estado BIT DEFAULT TRUE
-);
+    CREATE table User(
+        Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        País VARCHAR(50) NOT NULL,
+        Primer nombre VARCHAR(50) NOT NULL,
+        Segundo nombre VARCHAR(50) NOT NULL,
+        Contraseña VARCHAR(50) NOT NULL,
+        Rol VARCHAR(50) NOT NULL,
+        Username VARCHAR(50) NOT NULL,
+        
+    ); 
 
-CREATE TABLE Autos (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(50) NOT NULL UNIQUE,
-    modelo VARCHAR(50) NOT NULL,
-    tamaño INT NOT NULL,
-    puertas INT NOT NULL,
-    FOREIGN KEY (CategoriaCarros_id) REFERENCES CategoriaCarros(id)
-);
+    CREATE table Categoria(
+        Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        Descripcion VARCHAR(50) NOT NULL,
+        User_Id INT NOT NULL,
+        FOREIGN KEY (User_Id) REFERENCES User(Id)
+    ); 
 
-CREATE TABLE AutosPersona (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    fecha DATE NOT NULL,
-    FOREIGN KEY (Autos_id) REFERENCES Autos(id),
-    FOREIGN KEY (Persona_id) REFERENCES Persona(id)
-);
-
-CREATE TABLE Persona (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    cédula INT NOT NULL,
-    nombre VARCHAR(50) NOT NULL UNIQUE,
-    apellido VARCHAR(50) NOT NULL,
-    teléfono INT NOT NULL,
-    correo VARCHAR(50) NOT NULL
-);
-
+    CREATE table Recordatorio(
+        Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        Archivo VARCHAR(50) NOT NULL,
+        Descripcion VARCHAR(50) NOT NULL ,
+        Fecha DATE NOT NULL,
+        Hora DATETIME,
+        Titulo VARCHAR(50) NOT NULL ,
+        Categoria_Id INT NOT NULL,
+        FOREIGN KEY (Categoria_Id) REFERENCES Categoria(Id)
+        
+    );
 # Ver planificación 
 [Ver Aquí](https://trello.com/b/1rmrAMV0/parcialanalisis1077721349)
