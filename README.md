@@ -34,29 +34,23 @@ La empresa requiere un sistema de recordatorio personalizado para sus empleados,
 **RNF5: Disponibilidad y Recuperación de Datos**
 - El sistema debe garantizar la disponibilidad de los datos y contar con mecanismos de respaldo para la recuperación ante posibles fallos o pérdida de información.
 
+## Diseño de Diagramas
 
-#### MOCKUP logica
-
-   > Ver:
-   > ![mockup](IMG/mockup.png)
-
-### Diseño de Diagramas
-
-## [Diagrama de Clases](IMG/DiagramaClases/Clases.wsd)
+#### [Diagrama de Clases](IMG/DiagramaClases/Clases.wsd)
 
 ![Diagrama de Clases](IMG/DiagramaClases/Clases.png)
 
-## [Diagrama de Secuencia](IMG/DiagramaSecuencia/Secuencia.wsd)
+#### [Diagrama de Secuencia](IMG/DiagramaSecuencia/Secuencia.wsd)
 
 ![Diagrama de secuencia](IMG/DiagramaSecuencia/Secuencia.png)
 
 
-## [Diagrama de Casos de Uso](IMG/DiagramaCasosdeUso/Casosdeuso.wsd)
+#### [Diagrama de Casos de Uso](IMG/DiagramaCasosdeUso/Casosdeuso.wsd)
 
 ![Diagrama de Casos](IMG/DiagramaCasosdeUso/Casosdeuso.png)
 
 
-#### Diseñar Base de Datos
+## Diseñar Base de Datos
 
 > Ver:
 > ![modelo relacional](IMG/Mr/MR.png)
@@ -99,7 +93,13 @@ La empresa requiere un sistema de recordatorio personalizado para sus empleados,
         FOREIGN KEY (Categoria_Id) REFERENCES Categoria(Id)
 
     );
+
+
+```
 # Ver planificación
 [Ver Aquí](https://trello.com/b/sloMX50s/proyecto)
 
-```
+## MOCKUP logica
+
+   > Ver:
+   > ![mockup](IMG/mockup.png)
