@@ -1,0 +1,17 @@
+@startuml
+
+actor User
+entity "Sistema" as Sistema
+database "Categoria" as Categoria
+database "Recordatorio" as Recordatorio
+
+User -> Sistema : crearUser(id, país, primerNombre, primerApellido, contraseña, rol, username)
+Sistema --> User: User creado
+User -> Recordatorio: crearRecordatorio(id, archivo, descripción, fecha, hora, titulo, categoria_id)
+Recordatorio -> Sistema: Validar datos de recordatorio
+Sistema --> User: Recordatorio creado
+User -> Categoria: crearCategoria(id, descripción, titulo, user_id)
+Categoria -> Sistema: Validar datos de categoría
+Sistema --> User: Categoría creada
+
+@enduml

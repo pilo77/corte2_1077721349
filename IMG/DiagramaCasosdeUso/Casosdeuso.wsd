@@ -1,0 +1,32 @@
+@startuml
+
+left to right direction
+
+actor User
+actor Administrador
+
+rectangle "Gestión de User" {
+    User --> (Crear User)
+    User --> (Editar User)
+    User --> (Eliminar User)
+    User --> (Ver Detalles de User)
+    Administrador --> (Ver Lista de User)
+}
+
+rectangle "Gestión de Recordatorios" {
+    User --> (Crear Recordatorio)
+    User --> (Editar Recordatorio)
+    User --> (Eliminar Recordatorio)
+    User --> (Ver Detalles de Recordatorio)
+    User --> (Asignar Categoría a Recordatorio)
+}
+
+rectangle "Gestión de Categorías" {
+    User --> (Crear Categoría)
+    User --> (Editar Categoría)
+    User --> (Eliminar Categoría)
+    User --> (Ver Detalles de Categoría)
+}
+
+
+@enduml

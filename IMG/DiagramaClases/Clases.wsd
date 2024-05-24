@@ -1,0 +1,42 @@
+@startuml
+
+class User {
+    - id: int 
+    - país: String
+    - primerNombre: String
+    - primerApellido: String
+    - contraseña: String
+    - rol: String
+    - username: String
+    + crearUsuer(): String
+    + actualizarUser():String
+    + eliminarUser():String
+}
+
+class Categoria {
+    - id int
+    - descripción: String
+    - titulo: String
+    - user_id int 
+    + crearCategoria(): String
+    + actualizarCategoria():String
+    + eliminarCategoria():String
+}
+
+class Recordatorio {
+    - id: int
+    - archivo:String
+    - descripción: String
+    - fecha: String
+    - hora: String
+    - titulo: String
+    - categoria_id: int
+    + crearRecordatorio(): String
+    + actualizarRecordatorio():String
+    + eliminarRecordatorio():String
+}
+
+User --* Recordatorio 
+Categoria -- Recordatorio
+
+@enduml

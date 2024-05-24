@@ -40,10 +40,26 @@ La empresa requiere un sistema de recordatorio personalizado para sus empleados,
    > Ver:
    > ![mockup](IMG/mockup.png)
 
+### Diseño de Diagramas
+
+## [Diagrama de Clases](IMG/DiagramaClases/Clases.wsd)
+
+![Diagrama de Clases](IMG/DiagramaClases/Clases.png)
+
+## [Diagrama de Secuencia](IMG/DiagramaSecuencia/Secuencia.wsd)
+
+![Diagrama de secuencia](IMG/DiagramaSecuencia/Secuencia.png)
+
+
+## [Diagrama de Casos de Uso](IMG/DiagramaCasosdeUso/Casosdeuso.wsd)
+
+![Diagrama de Casos](IMG/DiagramaCasosdeUso/Casosdeuso.png)
+
+
 #### Diseñar Base de Datos
 
 > Ver:
-> ![modelo relacional](IMG/MR.png)
+> ![modelo relacional](IMG/Mr/MR.png)
 
 > Script de la base de datos:
 
