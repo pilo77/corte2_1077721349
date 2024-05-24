@@ -81,3 +81,8 @@ La empresa requiere un sistema de recordatorio personalizado para sus empleados,
     );
 # Ver planificación 
 [Ver Aquí](https://trello.com/b/1rmrAMV0/parcialanalisis1077721349)
+
+
+#### Moclup logica 
+> Ver:
+![modelo relacional](IMG/mockup.png)
