@@ -34,6 +34,32 @@ La empresa requiere un sistema de recordatorio personalizado para sus empleados,
 **RNF5: Disponibilidad y Recuperación de Datos**
 - El sistema debe garantizar la disponibilidad de los datos y contar con mecanismos de respaldo para la recuperación ante posibles fallos o pérdida de información.
 
+  ### Diseñar Base de Datos
+
+* `User`
+
+| Id |Pais      |PrimerNombre |segundoNombre|Contraseña| Rol         | Username |
+|----|----------|-------------|-------------|----------|-------------|----------|
+| 01 |Argentina |Camila       |Alexandra    |********  |Participante | Camila   |
+| 02 |Rusia     |Andres       |Camilo       |*****     |Participante2| Andres   |
+| 03 |Polonia   |Paula        |Sofia        |****      |Participante3| Paula    |
+
+* `Categoria`
+
+| Id |Descripcion         |User_Id |
+|----|--------------------|--------|
+| 01 |Ir a la Universidad |   03   |
+| 02 |Ir por las pastas   |   01   |   
+| 03 |Tomar Medicamentos  |   02   |
+
+* `Recordatorio`
+
+| Id |    Descripcion    |Fecha       |Hora    | Titulo   | Categoria_Id   |
+|----|-------------------|------------|--------|----------|----------------|
+| 01 |Levantate Temprano |20/05/2024  |3:00pm  |Importante|   02           |
+| 02 |Debes  ir          |23/05/2024  |7:00pm  |Importante|   03           | 
+| 03 |Es importante      |27/05/2024  |3:50pm  |Importante|   01           | 
+
 ## Diseño de Diagramas
 
 ### [Diagrama de Clases](IMG/DiagramaClases/Clases.wsd)
