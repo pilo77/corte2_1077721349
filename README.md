@@ -1,4 +1,4 @@
-# corte2_1077721349 - Control y seguimiento de carros.
+# Control de Recordatorio y seguimiento  Personalizado para la Gestión Integral del Tiempo y las Responsabilidades Laborales y Personales
 
 Necesidad:
 La empresa requiere un sistema de recordatorio personalizado para sus empleados, con el fin de mejorar la gestión del tiempo y las responsabilidades laborales y personales.
