@@ -1,42 +1,34 @@
 @startuml
 
-class CategoriaCarros {
-    - int : id
-    - String : nombre
-    - String : descripcion
-    - String : rendimiento
-    - boolean : estado 
+class User {
+    - int id
+    - String país
+    - String primerNombre
+    - String primerApellido
+    - String contraseña
+    - String rol
+    - String username
 }
 
-class Autos {
-    - int : id
-    - String : nombre
-    - String : modelo
-    - int : tamaño
-    - int : puertas
-    - int : CategoriaCarros_id
+class Categoria {
+    - int id
+    - String descripción
+    - String titulo
+    - User user_id
 }
 
-class Persona {
-    - int : id
-    - int : cedula
-    - String : nombre
-    - String : apellido
-    - int : telefono
-    - String : correo 
+class Recordatorio {
+    - int id
+    - String archivo
+    - String descripción
+    - String fecha
+    - String hora
+    - String titulo
+    - Categoria categoria_id
 }
 
-class AutosPersona {
-    - int : id
-    - date : fecha
-    - int : Autos_id
-    - int : Persona_id
-}
-
-CategoriaCarros "1" -- "*" Autos : contiene
-Autos "*" -- "*" Persona : contiene
-Autos "1" -- "*" AutosPersona : tiene relación
-Persona "1" -- "*" AutosPersona : tiene relación
+User "1" -- "*" Categoria : tiene
+Categoria "1" -- "*" Recordatorio : contiene
 
 @enduml
 
