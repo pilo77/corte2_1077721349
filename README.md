@@ -42,17 +42,20 @@ La empresa requiere un sistema de recordatorio personalizado para sus empleados,
 
 - El sistema debe garantizar la disponibilidad de los datos y contar con mecanismos de respaldo para la recuperación ante posibles fallos o pérdida de información.
 
+
+## Diseñar Base de Datos
+
 ## User
 
 | Id  | PrimerNombre | SegundoNombre | Username | Contraseña | País      | Rol           |
 | --- | ------------ | ------------- | -------- | ---------- | --------- | ------------- |
 | 01  | Camila       | Alexandra     | Camila   | ****       | Argentina | Participante  |
-| 02  | Andres       | Camilo        | Andres   | ***        | Rusia     | Participante2 |
+| 02  | Andrés       | Camilo        | Andrés   | ***        | Rusia     | Participante2 |
 | 03  | Paula        | Sofia         | Paula    | **         | Polonia   | Participante3 |
 
 ## Categoria
 
-| Id  | Nombre            | Descripcion         | User_Id |
+| Id  | Nombre            | Descripción         | User_Id |
 | --- | ----------------- | ------------------- | ------- |
 | 01  | Universidad       | Ir a la Universidad | 03      |
 | 02  | Pastas            | Ir por las pastas   | 01      |
@@ -60,9 +63,9 @@ La empresa requiere un sistema de recordatorio personalizado para sus empleados,
 
 ## Recordatorio
 
-| Id  | Titulo            | Descripcion        | Fecha      | Hora   | Categoria_Id |
+| Id  | Título            | Descripción        | Fecha      | Hora   | Categoría_Id |
 | --- | ----------------- | ------------------ | ---------- | ------ | ------------ |
-| 01  | Importante        | Levantate Temprano | 20/05/2024 | 3:00pm | 02           |
+| 01  | Importante        | Levantarse Temprano| 20/05/2024 | 3:00pm | 02           |
 | 02  | Importante        | Debes ir           | 23/05/2024 | 7:00pm | 03           |
 | 03  | Importante        | Es importante      | 27/05/2024 | 3:50pm | 01           |
 
@@ -81,13 +84,15 @@ La empresa requiere un sistema de recordatorio personalizado para sus empleados,
 
 ![Diagrama de Casos](IMG/DiagramaCasosdeUso/Casosdeuso.png)
 
-## Diseñar Base de Datos
+
 
 > Ver:
 
 ### [Diagrama MR](IMG/Mr/MR.wsd)
 
 > ![modelo relacional](IMG/Mr/MR.png)
+
+
 
 > Script de la base de datos:
 
