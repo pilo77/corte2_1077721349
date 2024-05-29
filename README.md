@@ -144,7 +144,10 @@ La empresa requiere un sistema de recordatorio personalizado para sus empleados,
 ## MOCKUP logica
 
 > Mockup:
-> ![mockup](IMG/mockup1.jpg)
+> ![mockup](IMG/m1.jpg)
 
 > Mockup:
-> ![mockup](IMG/mockup2.jpg)
+> ![mockup](IMG/m2.jpg)
+
+> Mockup:
+> ![mockup](IMG/m3.jpg)
